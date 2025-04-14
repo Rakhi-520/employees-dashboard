@@ -1,14 +1,16 @@
 .dashboard-layout {
   display: flex;
+  min-height: 100vh;
+  background-color: #f5f6fa;
+  font-family: 'Segoe UI', sans-serif;
 }
+
 
 
 .dashboard-main {
   flex: 1;
-  background-color: #f5f6fa;
+  margin-left: 220px;
   padding: 2rem;
-  min-height: 100vh;
-  box-sizing: border-box;
 }
 
 .dashboard-page {
@@ -21,7 +23,7 @@
   background-color: #ffffff;
   border-radius: 12px;
   padding: 1.5rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+
 }
 
 .dashboard-table-wrapper {
