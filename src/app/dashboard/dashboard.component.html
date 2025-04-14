@@ -1,0 +1,97 @@
+<div class="dashboard-layout">
+  
+  <app-sidebar></app-sidebar>
+
+  <!-- Main content area -->
+  <div class="dashboard-main">
+    <app-navbar></app-navbar>
+
+    <!-- Page content section -->
+    <div class="dashboard-page">
+      <div class="dashboard-card">
+        <p-table [value]="employees" *ngIf="employees && employees.length">
+          <ng-template pTemplate="header">
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Role</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </ng-template>
+
+          <ng-template pTemplate="body" let-emp let-rowIndex="rowIndex">
+            <tr>
+              <td>
+                <ng-container *ngIf="editingIndex === rowIndex; else viewName">
+                  <input type="text" [(ngModel)]="editableEmployee.name" />
+                </ng-container>
+                <ng-template #viewName>{{ emp.name }}</ng-template>
+              </td>
+
+              <td>
+                <ng-container *ngIf="editingIndex === rowIndex; else viewEmail">
+                  <input type="email" [(ngModel)]="editableEmployee.email" />
+                </ng-container>
+                <ng-template #viewEmail>{{ emp.email }}</ng-template>
+              </td>
+
+              <td>
+                <ng-container *ngIf="editingIndex === rowIndex; else viewRole">
+                  <input type="text" [(ngModel)]="editableEmployee.role" />
+                </ng-container>
+                <ng-template #viewRole>{{ emp.role }}</ng-template>
+              </td>
+
+              <td>
+                <ng-container *ngIf="editingIndex === rowIndex; else viewStatus">
+                  <select [(ngModel)]="editableEmployee.status">
+                    <option value="Active">Active</option>
+                    <option value="Inactive">Inactive</option>
+                  </select>
+                </ng-container>
+                <ng-template #viewStatus>
+                  <span
+                    [ngClass]="{
+                      'status-badge': true,
+                      'active': emp.status === 'Active',
+                      'inactive': emp.status === 'Inactive'
+                    }"
+                  >
+                    {{ emp.status }}
+                  </span>
+                </ng-template>
+              </td>
+
+              <td>
+                <ng-container *ngIf="editingIndex === rowIndex; else viewActions">
+                  <button
+                    pButton
+                    label="Save"
+                    class="p-button-sm p-button-success"
+                    (click)="saveEdit(rowIndex)"
+                  ></button>
+                  <button
+                    pButton
+                    label="Cancel"
+                    class="p-button-sm p-button-secondary"
+                    (click)="cancelEdit()"
+                  ></button>
+                  <button
+                    pButton
+                    label="Delete"
+                    class="p-button-sm p-button-danger"
+                    (click)="deleteRow(rowIndex)"
+                  ></button>
+                </ng-container>
+                <ng-template #viewActions>
+                  <a (click)="startEdit(rowIndex)" style="color: #1976d2; cursor: pointer;">Edit</a>
+                </ng-template>
+              </td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </div>
+    </div>
+  </div>
+</div>

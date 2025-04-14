@@ -1,0 +1,9 @@
+.status-active {
+  color: green;
+  font-weight: bold;
+}
+
+.status-inactive {
+  color: gray;
+  font-weight: bold;
+}
