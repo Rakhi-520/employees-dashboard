@@ -37,9 +37,25 @@ src/ ├── app/ │ ├── components/ │ │ ├── navbar/ │ │ 
 
 ##  Installation
 
-
 1. Clone the repository:
 
 git clone https://github.com/your-username/employees-dashboard.git
 cd employees-dashboard
+
+2. npm install
+
+## Installed Dependencies
+
+The following dependencies were installed for this project:
+
+
+npm install primeng @primeng/themes
+npm install primeflex
+npm install primeicons
+npm install @angular/animations
+
+## Start the Server
+
+npm start
+
 
